@@ -4,20 +4,22 @@
 </script>
 
 <template>
-    <div class="header">
-        <img class="logo-header" src="/src/assets/dc-logo.png" alt="">
-        <ul class="list-header">
-            <li>CHARACTERS</li>
-            <li>COMICS</li>
-            <li>MOVIES</li>
-            <li>TV</li>
-            <li>GAMES</li>
-            <li>COLLECTIBLES</li>
-            <li>VIDEOS</li>
-            <li>FANS</li>
-            <li>NEWS</li>
-            <li>SHOP</li>
-        </ul>
+    <div class="container">
+        <div class="header">
+            <img class="logo-header" src="/src/assets/dc-logo.png" alt="">
+            <ul class="list-header">
+                <li>CHARACTERS</li>
+                <li>COMICS</li>
+                <li>MOVIES</li>
+                <li>TV</li>
+                <li>GAMES</li>
+                <li>COLLECTIBLES</li>
+                <li>VIDEOS</li>
+                <li>FANS</li>
+                <li>NEWS</li>
+                <li>SHOP</li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -26,8 +28,8 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin: 10px auto;
-        width: 70%;
+        margin: 10px;
+        /* width: 70%; */
     }
 
     .logo-header {
