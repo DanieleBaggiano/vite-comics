@@ -41,5 +41,7 @@
         column-gap: 20px;
         list-style-type: none;
         font-size: .6rem;
+        font-weight: bold;
+        color: rgb(74 73 72);
     }
 </style>
