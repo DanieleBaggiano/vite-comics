@@ -1,6 +1,115 @@
-<script setup>
-    import { ref } from 'vue'
-
+<script>
+    export default {
+        data() {
+            return {
+                dcComics: [
+                    {
+                        title: "Characters",
+                    },
+                    {
+                        title: "comics",
+                    },
+                    {
+                        title: "Movies",
+                    },
+                    {
+                        title: "TV",
+                    },
+                    {
+                        title: "Games",
+                    },
+                    {
+                        title: "Videos",
+                    },
+                    {
+                        title: "News",
+                    },
+                ],
+                shop: [
+                    {
+                        title: "Shop DC",
+                    },
+                    {
+                        title: "Shop DC Collectibles",
+                    },
+                ],
+                dc: [
+                    {
+                        title: "Terms Of Use",
+                    },
+                    {
+                        title: "Privacy Policy (New)",
+                    },
+                    {
+                        title: "Ad Choices",
+                    },
+                    {
+                        title: "Advertising",
+                    },
+                    {
+                        title: "Jobs",
+                    },
+                    {
+                        title: "Subscriptions",
+                    },
+                    {
+                        title: "Talent Workshops",
+                    },
+                    {
+                        title: "CPSC Certificates",
+                    },
+                    {
+                        title: "Ratings",
+                    },
+                    {
+                        title: "Shop Help",
+                    },
+                    {
+                        title: "Contact Us",
+                    },
+                ],
+                sites: [
+                    {
+                        title: "DC",
+                    },
+                    {
+                        title: "MAD Magazine",
+                    },
+                    {
+                        title: "DC Kids",
+                    },
+                    {
+                        title: "DC Universe",
+                    },
+                    {
+                        title: "DC Power Visa",
+                    },
+                ],
+                iconsFooter: [
+                    {
+                        image: "footer-facebook.png",
+                    },
+                    {
+                        image: "footer-twitter.png",
+                    },
+                    {
+                        image: "footer-youtube.png",
+                    },
+                    {
+                        image: "footer-pinterest.png",
+                    },
+                    {
+                        image: "footer-periscope.png",
+                    },
+                ]
+            }
+        },
+        methods: {
+            getImageUrl(imageName) {
+                return new URL(`../assets/${imageName}`, import.meta.url).href;
+            }
+        }
+    }
 </script>
 
 <template>
@@ -10,47 +119,26 @@
                 <div class="list-comics-shop">
                     <h2>DC COMICS</h2>
                     <ul class="lists">
-                        <li>Characters</li>
-                        <li>Comics</li>
-                        <li>Movies</li>
-                        <li>TV</li>
-                        <li>Games</li>
-                        <li>Videos</li>
-                        <li>News</li>
+                        <li v-for="item in dcComics">{{ item.title }}</li>
                     </ul>
 
                     <h2 class="shop-title">SHOP</h2>
                     <ul class="lists">
-                        <li>Shop DC</li>
-                        <li>Shop DC Collectibles</li>
+                        <li v-for="item in shop">{{ item.title }}</li>
                     </ul>
                 </div>
 
                 <div class="list-dc">
                     <h2>DC</h2>
                     <ul class="lists">
-                        <li>Terms Of Use</li>
-                        <li>Privacy Policy (New)</li>
-                        <li>Ad Choices</li>
-                        <li>Advertising</li>
-                        <li>Jobs</li>
-                        <li>Subscriptions</li>
-                        <li>Talent Workshops</li>
-                        <li>CPSC Certificates</li>
-                        <li>Ratings</li>
-                        <li>Shop Help</li>
-                        <li>Contact Us</li>
+                        <li v-for="item in dc">{{ item.title }}</li>
                     </ul>
                 </div>
 
                 <div class="list-sites">
                     <h2>SITES</h2>
                     <ul class="lists">
-                        <li>DC</li>
-                        <li>MAD Magazine</li>
-                        <li>DC Kids</li>
-                        <li>DC Universe</li>
-                        <li>DC Power Visa</li>
+                        <li v-for="item in sites">{{ item.title }}</li>
                     </ul>
                 </div>
             </div>
@@ -67,36 +155,36 @@
 
             <div class="icons-footer">
                 <h2>FOLLOW US</h2>
-                <img class="icons" src="/src/assets/footer-facebook.png" alt="">
-                <img class="icons" src="/src/assets/footer-twitter.png" alt="">
-                <img class="icons" src="/src/assets/footer-youtube.png" alt="">
-                <img class="icons" src="/src/assets/footer-pinterest.png" alt="">
-                <img class="icons" src="/src/assets/footer-periscope.png" alt="">
+                <ul class="icons-footer">
+                    <li v-for="image in iconsFooter">
+                        <img class="icons" :src="getImageUrl(image.image)" alt="">
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
+    @use "../style/partials/variables" as *;
+    @use "../style/partials/mixins" as *;
+    
     .bg-img {
         background-image: url(/src/assets/footer-bg.jpg);
-        /* height: 300px; */
     }
 
     .footer {
-        display: flex;
-        justify-content: space-between;
+        @include flex($justify: space-between);
     }
 
     .bg-logo {
         background-image: url(/src/assets/dc-logo-bg.png);
-        /* height: 400px; */
         width: 300px;
         background-size: cover;
     }
 
     .lists-footer {
-        color: white;
+        color: $white;
         font-size: .6rem;
         display: flex;
         gap: 30px;
@@ -108,32 +196,31 @@
     }
 
     .lists {
-        color: rgb(146 144 142);
+        color: $gray;
         list-style-type: none;
         margin-top: 10px;
         line-height: 1.5;
     }
 
     .btm-footer {
-        background-color: rgb(48 48 48);
-        /* height: 30px; */
+        background-color: $dark-gray;
         padding: 30px 0;
     }
 
     .sign-up {
-        background-color: rgb(48 48 48);
-        border: 1px solid rgb(2 130 249);
-        color: white;
+        background-color: $dark-gray;
+        border: 1px solid $primary-color;
+        color: $white;
         font-size: .6rem;
         padding: 10px;
     }
 
     .icons-footer {
-        display: flex;
-        align-items: center;
+        @include flex();
         gap: 20px;
-        color: rgb(2 130 249);
+        color: $primary-color;
         font-size: .6rem;
+        list-style-type: none;
     }
 
     .icons {

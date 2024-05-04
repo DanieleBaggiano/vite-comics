@@ -1,47 +1,100 @@
-<script setup>
-    import { ref } from 'vue'
-
+<script>
+    export default {
+        data() {
+            return {
+                menuItems: [
+                    {
+                        title: "CHARACTERS",
+                        active: false,
+                    },
+                    {
+                        title: "MOVIES",
+                        active: true,
+                    },
+                    {
+                        title: "TV",
+                        active: false,
+                    },
+                    {
+                        title: "GAMES",
+                        active: false,
+                    },
+                    {
+                        title: "COLLECTIBLES",
+                        active: false,
+                    },
+                    {
+                        title: "VIDEOS",
+                        active: false,
+                    },
+                    {
+                        title: "FANS",
+                        active: false,
+                    },
+                    {
+                        title: "NEWS",
+                        active: false,
+                    },
+                    {
+                        title: "SHOP",
+                        active: false,
+                    },
+                ]
+            }
+        },
+    }
 </script>
 
 <template>
     <div class="container">
         <div class="header">
-            <img class="logo-header" src="/src/assets/dc-logo.png" alt="">
+            <img class="logo-header" src="/src/assets/dc-logo.png" alt="Logo di DC Comics">
             <ul class="list-header">
-                <li>CHARACTERS</li>
-                <li>COMICS</li>
-                <li>MOVIES</li>
-                <li>TV</li>
-                <li>GAMES</li>
-                <li>COLLECTIBLES</li>
-                <li>VIDEOS</li>
-                <li>FANS</li>
-                <li>NEWS</li>
-                <li>SHOP</li>
+                <li v-for="item in menuItems" :class="{ active: item.active}">
+                    <a href="">{{ item.title }}</a>
+                </li>
             </ul>
         </div>
     </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
+    @use "../style/partials/mixins" as *;
+    @use "../style/partials/variables" as *;
+
     .header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin: 10px;
-        /* width: 70%; */
+        @include flex(row, space-between, center);
     }
 
     .logo-header {
-        width: 60px;
+        width: 80px;
+        padding: 10px;
     }
 
     .list-header {
-        display: flex;
+        @include flex();
         column-gap: 20px;
         list-style-type: none;
         font-size: .6rem;
         font-weight: bold;
-        color: rgb(74 73 72);
+        height: 80px;
+
+        li {
+            &.active {
+                border-bottom: 4px solid $primary-color;
+                height: 100%;
+                display: flex;
+                align-items: center;
+
+                a {
+                    color: $primary-color;
+                }
+            }
+        }
+        
+        a {
+            text-decoration: none;
+            color: $black
+        }
     }
 </style>

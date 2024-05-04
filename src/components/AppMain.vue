@@ -1,6 +1,37 @@
-<script setup>
-    import { ref } from 'vue'
-
+<script>
+    export default {
+        data() {
+            return {
+                iconsImg: [
+                    {
+                        image: "buy-comics-digital-comics.png",
+                        title: "DIGITAL COMICS",
+                    },
+                    {
+                        image: "buy-comics-merchandise.png",
+                        title: "DC MERCHANDISE",
+                    },
+                    {
+                        image: "buy-comics-shop-locator.png",
+                        title: "SUBSCRIPTION",
+                    },
+                    {
+                        image: "buy-comics-shop-locator.png",
+                        title: "COMIC SHOP LOCATOR",
+                    },
+                    {
+                        image: "buy-dc-power-visa.svg",
+                        title: "DC POWER VISA",
+                    },
+                ],
+            }
+        },
+        methods: {
+            getImageUrl(imageName) {
+                return new URL(`../assets/${imageName}`, import.meta.url).href;
+            }
+        }
+    }
 </script>
 
 <template>
@@ -10,31 +41,18 @@
 
     <div class="bg-blue">
         <ul class="list-main container">
-            <li class="align-items">
-                <img class="img-main" src="/src/assets/buy-comics-digital-comics.png" alt="">
-                <span>DIGITAL COMICS</span>
-            </li>
-            <li class="align-items">
-                <img class="img-main" src="/src/assets/buy-comics-merchandise.png" alt="">
-                <span>DC MERCHANDISE</span>
-            </li>
-            <li class="align-items">
-                <img class="img-main" src="/src/assets/buy-comics-shop-locator.png" alt="">
-                <span>SUBSCRIPTION</span>
-            </li>
-            <li class="align-items">
-                <img class="img-main" src="/src/assets/buy-comics-shop-locator.png" alt="">
-                <span>COMIC SHOP LOCATOR</span>
-            </li>
-            <li class="align-items">
-                <img class="img-main" src="/src/assets/buy-dc-power-visa.svg" alt="">
-                <span>DC POWER VISA</span>
+            <li v-for="image in iconsImg" class="align-items">
+                <img class="img-main" :src="getImageUrl(image.image)" alt="">
+                <span>{{ image.title }}</span>
             </li>
         </ul>
     </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
+    @use "../style/partials/variables" as *;
+    @use "../style/partials/mixins" as *;
+
     .bg-black {
         background-color: black;
         color: white;
@@ -44,25 +62,24 @@
     }
 
     .bg-blue {
-        background-color: rgb(2 130 249);
-        color: white;
+        background-color: $primary-color;
+        color: $white;
         padding: 30px;
     }
 
     .list-main {
-        display: flex;
+        @include flex($justify: normal);
         list-style-type: none;
         gap: 30px;
     }
 
     .align-items {
-        display: flex;
-        align-items: center;
+        @include flex();
         gap: 20px;
         font-size: .6rem;
     }
 
     .img-main {
-        width: 30px;
+        height: 30px;
     }
 </style>
