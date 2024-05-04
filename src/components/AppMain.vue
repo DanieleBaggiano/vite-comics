@@ -54,8 +54,8 @@
     @use "../style/partials/mixins" as *;
 
     .bg-black {
-        background-color: black;
-        color: white;
+        background-color: $black;
+        color: $white;
         padding: 30px 0;
         font-size: .6rem;
         /* text-align: center; */
