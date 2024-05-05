@@ -46,8 +46,8 @@
 </script>
 
 <template>
-    <div class="container">
-        <div class="header">
+    <div class="container-header">
+        <div class="header container">
             <img class="logo-header" src="/src/assets/dc-logo.png" alt="Logo di DC Comics">
             <ul class="list-header">
                 <li v-for="item in menuItems" :class="{ active: item.active}">
@@ -61,6 +61,11 @@
 <style scoped lang="scss">
     @use "../style/partials/mixins" as *;
     @use "../style/partials/variables" as *;
+
+    .container-header {
+        background-color: $white;
+        width: 100%;
+    }
 
     .header {
         @include flex(row, space-between, center);

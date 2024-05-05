@@ -154,7 +154,7 @@
             </div>
 
             <div class="icons-footer">
-                <h2>FOLLOW US</h2>
+                <h2 class="cursor">FOLLOW US</h2>
                 <ul class="icons-footer">
                     <li v-for="image in iconsFooter">
                         <img class="icons" :src="getImageUrl(image.image)" alt="">
@@ -213,6 +213,7 @@
         color: $white;
         font-size: .6rem;
         padding: 10px;
+        cursor: pointer;
     }
 
     .icons-footer {
@@ -221,6 +222,10 @@
         color: $primary-color;
         font-size: .6rem;
         list-style-type: none;
+    }
+
+    .cursor {
+        cursor: pointer;
     }
 
     .icons {

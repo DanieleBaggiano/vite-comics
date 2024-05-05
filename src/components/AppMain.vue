@@ -35,9 +35,9 @@
 </script>
 
 <template>
-    <div class="bg-black">
-        <h2 class="container"> {{ "--> Content goes here <--" }} </h2>
-    </div>
+    <!-- <div class="bg-black">
+        <h2 class="container"> Content goes here</h2>
+    </div> -->
 
     <div class="bg-blue">
         <ul class="list-main container">
@@ -53,13 +53,12 @@
     @use "../style/partials/variables" as *;
     @use "../style/partials/mixins" as *;
 
-    .bg-black {
-        background-color: $black;
-        color: $white;
-        padding: 30px 0;
-        font-size: .6rem;
-        /* text-align: center; */
-    }
+    // .bg-black {
+    //     background-color: $black;
+    //     color: $white;
+    //     padding: 30px 0;
+    //     font-size: .6rem;
+    // }
 
     .bg-blue {
         background-color: $primary-color;
